@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:39:15 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/19 16:02:28 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/11 14:34:35 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,14 @@
 # include "get_next_line.h"
 # include "dictionnary.h"
 
-enum	e_keys
-{
-	A_KEY,
-	S_KEY,
-	D_KEY,
-	W_KEY = 13,
-	ESC_KEY = 53,
-};
-
-enum	e_events
-{
-	ON_KEYDOWN = 2,
-	ON_KEYUP = 3,
-	ON_DESTROY = 17
-};
-
 typedef struct s_point
 {
-	unsigned int	x;
-	unsigned int	y;
+	int	x;
+	int	y;
 }	t_point;
 
 typedef struct s_map
 {
-	char			*path;
 	char			**content;
 	char			**content_copy;
 	int				height;
@@ -68,21 +51,17 @@ typedef struct s_object
 
 /* Utils */
 void	flood_fill(char	**map, int i, int j);
-void	raise_error(char *msg, int err);
-int		mr_propre(t_object *obj);
+void	raise_error(char *msg, int err, t_object *obj);
+int		exiter(t_object *obj);
 int		is_valid_file(char *filename);
 
 /* Parsing */
 void	parse(t_object *object, char *path);
-
 /* Map */
-t_map	*init_map(char *path);
-
+t_map	*init_map(int fd);
 /* Graphics */
-void	render_map(t_object *obj);
 void	load_window(t_object	*obj);
-
 /* Gameplay */
-int		keydown_handler(int keycode, t_object *object);
+int		move_player(t_object *obj, t_point pos);
 
 #endif

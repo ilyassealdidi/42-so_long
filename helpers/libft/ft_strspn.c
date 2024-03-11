@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strspn.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 09:25:09 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/11 13:42:41 by ialdidi          ###   ########.fr       */
+/*   Created: 2024/03/09 12:45:35 by ialdidi           #+#    #+#             */
+/*   Updated: 2024/03/11 10:59:10 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/libft.h"
 
-int	main(int argc, char **av)
+size_t	ft_strspn(const char *s, const char *charset)
 {
-	t_object	obj;
+	size_t	i;
 
-	if (argc != 2)
-		raise_error("Invalid format, try: [./program] [map_filename]", 0, NULL);
-	parse(&obj, av[1]);
-	load_window(&obj);
+	i = 0;
+	while (s[i])
+	{
+		if (!ft_strchr(charset, s[i]))
+			break ;
+		i++;
+	}
+	return (i);
 }

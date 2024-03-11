@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:33:50 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/19 15:43:07 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/11 10:40:47 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	init_player(t_object *obj, int x, int y)
 
 	p = (t_player *)malloc(sizeof(t_player));
 	if (!p)
-		return (raise_error(NULL, errno));
+		return (raise_error(NULL, errno, obj));
 	p->position.x = x;
 	p->position.y = y;
 	p->moves = 0;
@@ -84,15 +84,12 @@ static int	flood_map(t_object	*obj)
 
 void	parse(t_object *obj, char *path)
 {
-	obj->map = init_map(path);
-	if (!init_items(obj))
-	{
-		mr_propre(obj);
-		raise_error("Invalid map!!", 0);
-	}
-	if (!flood_map(obj))
-	{
-		mr_propre(obj);
-		raise_error("The player won't be able to reach some postions!!", 0);	
-	}
+	int	fd;
+
+	fd = is_valid_file(path);
+	if (!fd)
+		raise_error(0, errno, NULL);
+	obj->map = init_map(fd);
+	if (!init_items(obj) || !flood_map(obj))
+		raise_error("Invalid map!!", 0, obj);
 }

@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:24:11 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/15 09:09:37 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/11 10:57:54 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void	ft_putnbr_fd(int n, int fd);
 /*                          Additionnal Functions                             */
 /* ************************************************************************** */
 char	*ft_strpbrk(const char *s, const char *charset);
+size_t	ft_strspn(const char *s, const char *charset);
 
 #endif

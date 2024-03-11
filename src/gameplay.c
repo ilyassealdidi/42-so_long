@@ -3,71 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   gameplay.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:39:52 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/20 12:54:01 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/11 11:54:31 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_object	*g_obj;
-
-static int	check_next_block(char c)
+static int	is_movable(t_object *obj, char c)
 {
 	t_player	*p;
 
-	p = g_obj->player;
+	p = obj->player;
 	if (c == 'C')
-		g_obj->map->collects--;
-	else if (c == 'E' && !g_obj->map->collects)
-	{
-		ft_putstr_fd(WIN_MESSAGE, 1);
-		exit(0);
-	}
+		obj->map->collects--;
+	else if (c == 'E' && !obj->map->collects)
+		return (1);
 	else if (c != '0')
 		return (0);
-	g_obj->map->content[p->position.y][p->position.x] = '0';
+	obj->map->content[p->position.y][p->position.x] = '0';
 	return (1);
 }
 
-static void	move_player(char *pos)
+int	move_player(t_object *obj, t_point pos)
 {
 	t_player	*p;
 	char		**map;
 
-	p = g_obj->player;
-	map = g_obj->map->content;
-	if (check_next_block(map[p->position.y - pos[1]][p->position.x + pos[0]]))
+	p = obj->player;
+	map = obj->map->content;
+	if (is_movable(obj, map[p->position.y - pos.y][p->position.x + pos.x]))
 	{
-		p->position.x += pos[0];
-		p->position.y -= pos[1];
-		g_obj->map->content[p->position.y][p->position.x] = 'P';
+		p->position.x += pos.x;
+		p->position.y -= pos.y;
 		ft_putnbr_fd(++p->moves, 1);
 		ft_putstr_fd(" Move(s)\n", 1);
-		render_map(g_obj);
-	}
-}
-
-int	keydown_handler(int key, t_object *object)
-{
-	char	new_pos[2];
-
-	g_obj = object;
-	if (key == ESC_KEY)
-		mr_propre(g_obj);
-	else if (key == A_KEY || key == S_KEY || key == D_KEY || key == W_KEY)
-	{
-		if (key == A_KEY)
-			new_pos[0] = -1;
-		else if (key == S_KEY)
-			new_pos[1] = -1;
-		else if (key == D_KEY)
-			new_pos[0] = 1;
-		else
-			new_pos[1] = 1;
-		move_player(new_pos);
+		if (map[p->position.y][p->position.x] == 'E')
+		{
+			ft_putstr_fd(WIN_MESSAGE, 1);
+			exiter(obj);
+		}
+		map[p->position.y][p->position.x] = 'P';
+		return (1);
 	}
 	return (0);
 }

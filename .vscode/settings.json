@@ -15,6 +15,9 @@
 		"locale": "c",
 		"dictionnary.h": "c",
 		"so_long_bonus.h": "c",
-		"dictionnary_bonus.h": "c"
+		"dictionnary_bonus.h": "c",
+		"__node_handle": "c",
+		"__functional_03": "c",
+		"functional": "c"
 	}
 }

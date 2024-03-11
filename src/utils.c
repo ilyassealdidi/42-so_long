@@ -6,13 +6,13 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:41:38 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/19 14:10:50 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/11 11:25:10 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	mr_propre(t_object *obj)
+static void	destroy_object(t_object *obj)
 {
 	int	i;
 
@@ -26,8 +26,14 @@ int	mr_propre(t_object *obj)
 	free(obj->map->content_copy);
 	free(obj->map);
 	free(obj->player);
-	mlx_destroy_window(obj->mlx, obj->win);
-	exit(1);
+	//mlx_destroy_window(obj->mlx, obj->win);
+}
+
+int	exiter(t_object *obj)
+{
+	destroy_object(obj);
+	exit(0);
+	return (0);
 }
 
 void	flood_fill(char	**map, int i, int j)
@@ -44,22 +50,26 @@ void	flood_fill(char	**map, int i, int j)
 	}
 }
 
-void	raise_error(char *msg, int err)
+void	raise_error(char *msg, int err, t_object *obj)
 {
 	ft_putstr_fd("Error\n", 2);
 	if (msg)
 		ft_putstr_fd(msg, 2);
-	else
+	if (err)
 		ft_putstr_fd(strerror(err), 2);
+	if (obj)
+		destroy_object(obj);
 	exit(1);
 }
 
-int	is_valid_file(char *filename)
+int	is_valid_file(char *path)
 {
-	char	*ext;
+	int		fd;
+	int		len;
 
-	ext = ft_strrchr(filename, '.');
-	if (!ext || ft_strncmp(ext, ".ber", 4))
-		return (NOT_VALID);
-	return (ft_strlen(ext) == 4);
+	len = ft_strlen(path);
+	if (len < 4 || ft_strncmp(path + len - 4, ".ber", 4))
+		raise_error("Allowed extension: *.ber", 0, NULL);
+	fd = open(path, O_RDONLY);
+	return (fd * (fd != -1));
 }

@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = src/main.c src/map.c src/gameplay.c src/parse.c src/utils.c src/window.c helpers/get_next_line/get_next_line.c
+SRCS = src/*.c helpers/get_next_line/get_next_line.c
 
 LIBRARY = -lmlx -framework OpenGL -framework AppKit
 
@@ -9,6 +9,7 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFT = helpers/libft
 
 all : $(NAME)
+
 
 $(NAME): $(SRCS) $(LIBFT)/libft.a includes/so_long.h includes/dictionnary.h
 	cc $(CFLAGS) $(SRCS) $(LIBRARY) $(LIBFT)/libft.a -o $(NAME)

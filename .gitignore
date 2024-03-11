@@ -56,5 +56,3 @@ dkms.conf
 .normignore
 main
 test.c
-so_long
-*.png
