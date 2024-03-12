@@ -6,11 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:01:10 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/05 13:27:21 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 10:53:23 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
 char	*ft_strdup(const char *str)
 {

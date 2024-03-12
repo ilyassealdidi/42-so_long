@@ -6,40 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:14:00 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/11 13:59:33 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 12:44:12 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-
-// void	print_moves(t_object *obj)
-// {
-// 	char	*str;
-// 	char	*num;
-// 	int		i;
-// 	int		j;
-
-// 	i = -1;
-// 	while (++i < 255)
-// 	{
-// 		j = -1;
-// 		while (++j < BLOCK_SIZE)
-// 			mlx_pixel_put(obj->mlx, obj->win, i, j, i << 24);
-// 	}
-// 	num = ft_itoa(obj->player->moves);
-// 	if (!num)
-// 		return (exit(1));
-// 	str = ft_strdup("Number of moves : ");
-// 	if (!str)
-// 		return (exit(1));
-// 	str = ft_strjoin(str, num);
-// 	if (!str)
-// 		return (exit(1));
-// 	mlx_string_put(obj->mlx, obj->win, 5, 5, 0xFFFFFFFF, str);
-// 	free(num);
-// 	free(str);
-// }
 
 static void	*get_image(t_object *obj, char c)
 {
@@ -94,8 +65,8 @@ static int	keydown_handler(int key, t_object *obj)
 	{
 		if (key == ESC_KEY)
 			exiter(obj);
-		next_pos.x = -1 * (key == A_KEY) + (key == D_KEY);
-		next_pos.y = -1 * (key == S_KEY) + (key == W_KEY);
+		set_point(&next_pos, -1 * (key == A_KEY) + (key == D_KEY),
+			-1 * (key == W_KEY) + (key == S_KEY));
 		if (move_player(obj, next_pos))
 			render_map(obj);
 	}

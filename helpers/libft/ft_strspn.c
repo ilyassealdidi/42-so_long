@@ -6,11 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:45:35 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/11 10:59:10 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 10:53:23 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
 size_t	ft_strspn(const char *s, const char *charset)
 {

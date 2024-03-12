@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/11 08:55:26 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/05 13:13:50 by ialdidi          ###   ########.fr       */
+/*   Created: 2023/11/15 08:35:48 by ialdidi           #+#    #+#             */
+/*   Updated: 2023/11/19 11:03:07 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "../includes/libftprintf.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_putstr(char *s)
 {
-	ft_memset(s, 0, n);
+	int	_printed;
+
+	_printed = 0;
+	if (!s)
+		return (ft_putstr("(null)"));
+	while (*s)
+		_printed += ft_putchar(*s++);
+	return (_printed);
 }

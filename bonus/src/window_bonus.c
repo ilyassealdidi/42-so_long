@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:14:00 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/19 14:55:09 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 12:48:24 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,43 +29,43 @@ void	print_moves(t_object *obj)
 	}
 	num = ft_itoa(obj->player->moves);
 	if (!num)
-		return (exit(1));
-	str = ft_strdup("Number of moves : ");
+		return (raise_error(0, errno, obj));
+	str = ft_strjoin("Number of moves : ", num);
 	if (!str)
-		return (exit(1));
-	str = ft_strjoin(str, num);
-	if (!str)
-		return (exit(1));
+		return (raise_error(0, errno, obj));
 	mlx_string_put(obj->mlx, obj->win, 5, 5, 0xFFFFFFFF, str);
 	free(num);
 	free(str);
 }
 
-static void	*get_image(void *mlx, char c, int x, int y)
+static void	*get_image(t_object *obj, char c)
 {
 	void	*img;
 	char	*path;
-	int		_0;
+	int		var;
 
+	path = (char *)malloc(20);
+	if (path)
+		raise_error(NULL, errno, obj);
 	if (c == '1')
 		path = IMG_WALL;
 	else if (c == '0')
 		path = IMG_SPACE;
 	else if (c == 'P')
-		path = IMG_PLAYER_RIGHT;
+		path = ft_strlcat(path, );
 	else if (c == 'C')
 		path = IMG_COLLECTIBLE;
 	else if (c == 'N')
 		path = IMG_ENEMY;
 	else
 		path = IMG_EXIT;
-	img = mlx_xpm_file_to_image(mlx, path, &_0, &_0);
+	img = mlx_xpm_file_to_image(obj->mlx, path, &var, &var);
 	if (!img)
-		raise_error(NULL, errno);
+		raise_error(NULL, errno, obj);
 	return (img);
 }
 
-void	render_map(t_object *obj)
+static void	render_map(t_object *obj)
 {
 	void	*img;
 	char	**map;
@@ -90,17 +90,34 @@ void	render_map(t_object *obj)
 	print_moves(obj);
 }
 
+static int	keydown_handler(int key, t_object *obj)
+{
+	t_point	next_pos;
+
+	obj->keycode = key;
+	if (ft_strchr("\001\002\015\065", key))
+	{
+		if (key == ESC_KEY)
+			exiter(obj);
+		set_point(&next_pos, -1 * (key == A_KEY) + (key == D_KEY),
+			-1 * (key == W_KEY) + (key == S_KEY));
+		if (move_player(obj, next_pos))
+			render_map(obj);
+	}
+	return (0);
+}
+
 void	load_window(t_object	*obj)
 {
 	obj->mlx = mlx_init();
 	if (!obj->mlx)
-		return (mr_propre(obj), (void)0);
+		raise_error(0, ENOMEM, obj);
 	obj->win = mlx_new_window(obj->mlx, obj->map->width * BLOCK_SIZE,
 			obj->map->height * BLOCK_SIZE, WINDOW_TITLE);
 	if (!obj->win)
-		return (mr_propre(obj), (void)0);
+		raise_error(0, ENOMEM, obj);
 	render_map(obj);
-	mlx_hook(obj->win, ON_DESTROY, 0, mr_propre, obj);
-	mlx_hook(obj->win, ON_KEYDOWN, 1, keydown_handler, obj);
+	mlx_hook(obj->win, ON_KEYDOWN, 0, keydown_handler, obj);
+	mlx_hook(obj->win, ON_DESTROY, 0, exiter, obj);
 	mlx_loop(obj->mlx);
 }

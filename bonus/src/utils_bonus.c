@@ -6,27 +6,31 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:41:38 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/19 14:36:48 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 11:57:59 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-int	mr_propre(t_object *obj)
+void	set_point(t_point *p, int x, int y)
 {
-	int	i;
+	p->x = x;
+	p->y = y;
+}
 
-	i = -1;
-	while (++i < obj->map->height)
-	{
-		free(obj->map->content[i]);
-		free(obj->map->content_copy[i]);
-	}
-	free(obj->map->content);
-	free(obj->map->content_copy);
+static void	destroy_object(t_object *obj)
+{
+	free_array(obj->map->content);
 	free(obj->map);
 	free(obj->player);
-	exit(1);
+	//mlx_destroy_window(obj->mlx, obj->win);
+}
+
+int	exiter(t_object *obj)
+{
+	destroy_object(obj);
+	exit(0);
+	return (0);
 }
 
 void	flood_fill(char	**map, int i, int j)
@@ -43,12 +47,14 @@ void	flood_fill(char	**map, int i, int j)
 	}
 }
 
-void	raise_error(char *msg, int err)
+void	raise_error(char *msg, int err, t_object *obj)
 {
-	ft_putstr_fd("Error\n", 2);
+	ft_printf("Error\n");
 	if (msg)
-		ft_putstr_fd(msg, 2);
-	else
-		ft_putstr_fd(strerror(err), 2);
+		ft_printf("%s", msg);
+	if (err)
+		ft_printf("%s", strerror(err));
+	if (obj)
+		destroy_object(obj);
 	exit(1);
 }

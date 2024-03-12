@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:18:35 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/11 14:04:38 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 10:31:25 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static int	set_map_dim(t_map *map)
 			if (w != (int)ft_strlen(map->content[h + 1]))
 				return (NOT_VALID);
 	}
-	if (h == w)
-		return (NOT_VALID);
 	map->height = h;
 	map->width = w;
 	return (VALID);
@@ -53,7 +51,7 @@ static char	*get_map(int fd)
 	}
 	close(fd);
 	len = ft_strlen(content);
-	if (!len || content[len - 1] != '\n')
+	if (!len || content[len - 1] != '1')
 		return (NULL);
 	return (content);
 }
@@ -75,14 +73,10 @@ t_map	*init_map(int fd)
 	map->content = ft_split(content, '\n');
 	if (!map->content)
 		raise_error(NULL, ENOMEM, NULL);
-	map->content_copy = ft_split(content, '\n');
-	if (!map->content_copy)
-		(free(content), free(map->content), raise_error(NULL, ENOMEM, NULL));
 	free(content);
 	if (!set_map_dim(map))
-		raise_error("Invalid map dimensions", errno, NULL);
+		raise_error("Invalid map dimensions", 0, NULL);
 	map->collects = 0;
-	map->exit.x = 0;
-	map->exit.y = 0;
+	set_point(&map->exit, 0, 0);
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:39:15 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/11 14:34:35 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 11:25:02 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include <mlx.h>
 # include <errno.h>
-# include "libft.h"
-# include "get_next_line.h"
+# include <fcntl.h>
+# include "../helpers/libft/libft.h"
+# include "../helpers/ft_printf/includes/libftprintf.h"
 # include "dictionnary.h"
 
 typedef struct s_point
@@ -28,7 +29,6 @@ typedef struct s_point
 typedef struct s_map
 {
 	char			**content;
-	char			**content_copy;
 	int				height;
 	int				width;
 	unsigned int	collects;
@@ -50,6 +50,9 @@ typedef struct s_object
 }	t_object;
 
 /* Utils */
+char	*get_next_line(int fd);
+void	free_array(char **arr);
+void	set_point(t_point *p, int x, int y);
 void	flood_fill(char	**map, int i, int j);
 void	raise_error(char *msg, int err, t_object *obj);
 int		exiter(t_object *obj);

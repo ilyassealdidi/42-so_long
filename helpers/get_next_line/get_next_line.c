@@ -6,14 +6,13 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:07:44 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/15 10:00:51 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 10:52:58 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/get_next_line.h"
-#include "../../includes/libft.h"
+#include "../libft/libft.h"
 
-void	update_line(char **str)
+static void	update_line(char **str)
 {
 	char	*tmp;
 
@@ -32,7 +31,7 @@ void	update_line(char **str)
 	*str = tmp;
 }
 
-char	*create_line(char *str)
+static char	*create_line(char *str)
 {
 	char	*extracted_line;
 	int		i;
@@ -55,19 +54,19 @@ char	*create_line(char *str)
 	return (extracted_line);
 }
 
-void	read_line(int fd, char **str)
+static void	read_line(int fd, char **str)
 {
 	char	*buffer;
 	char	*nl;
 	int		rd;
 
 	nl = NULL;
-	buffer = malloc((size_t)BUFFER_SIZE + 1);
+	buffer = malloc(1000 + 1);
 	if (!buffer)
 		return (free(*str), (void)(*str = NULL));
 	while (!nl)
 	{
-		rd = read(fd, buffer, BUFFER_SIZE);
+		rd = read(fd, buffer, 1000);
 		if (rd <= 0)
 		{
 			free(buffer);
@@ -86,8 +85,7 @@ char	*get_next_line(int fd)
 	static char	*str = NULL;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0
-		|| BUFFER_SIZE > 2147483647 || read(fd, NULL, 0) < 0)
+	if (read(fd, NULL, 0) < 0)
 		return (free(str), str = NULL);
 	if (!str || !ft_strchr(str, '\n'))
 		read_line(fd, &str);

@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ialdidi <ialdidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 09:10:19 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/15 17:56:25 by ialdidi          ###   ########.fr       */
+/*   Created: 2023/11/15 08:35:45 by ialdidi           #+#    #+#             */
+/*   Updated: 2023/11/19 11:03:01 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "../includes/libftprintf.h"
 
-char	*ft_strpbrk(const char *s, const char *charset)
+int	ft_putchar(char c)
 {
-	while (*s)
-	{
-		if (ft_strchr(charset, *s))
-			return ((char *)s);
-		s++;
-	}
-	return (NULL);
+	return (write(1, &c, 1));
 }

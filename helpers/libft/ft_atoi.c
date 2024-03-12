@@ -6,11 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 08:55:36 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/02/05 13:13:50 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 10:55:15 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
@@ -25,7 +25,7 @@ int	ft_atoi(const char *str)
 		sign = 1 - 2 * (*str++ == '-');
 	while (ft_isdigit(*str))
 	{
-		if (num > 922337203685477580 
+		if (num > 922337203685477580
 			|| (num == 922337203685477580 && *str - '0' > 7))
 			return (-1 * (sign == 1));
 		num = num * 10 + *str++ - '0';

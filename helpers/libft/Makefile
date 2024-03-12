@@ -6,7 +6,7 @@
 #    By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/01 15:34:00 by ialdidi           #+#    #+#              #
-#    Updated: 2024/03/11 10:58:17 by ialdidi          ###   ########.fr        #
+#    Updated: 2024/03/12 10:53:51 by ialdidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJS 			= $(SRC:.c=.o)
 CFLAGS			= -Wall -Wextra -Werror
 ARC				= ar rc
 
-LIBRARY			= /Users/ialdidi/Private/1337/so_long/includes/../../includes/libft.h
+LIBRARY			= libft.h
 NAME			= libft.a
 
 all:			$(NAME)

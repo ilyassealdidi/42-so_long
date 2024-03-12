@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:59:11 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/11 13:49:48 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 11:30:55 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define DICTIONNARY_H
 
 # define WINDOW_TITLE "Sooo loooooong!"
-# define WIN_MESSAGE "Congratulations!!"
+# define VICTORY_MESSAGE "Congratulations!!"
+# define LOSS_MESSAGE "Game over!!"
 
 # define IMG_SPACE "textures/SPACE.xpm"
 # define IMG_WALL "textures/WALL.xpm"
