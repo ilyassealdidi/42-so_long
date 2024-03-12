@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:18:35 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 11:43:07 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 14:22:43 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ static int	set_map_dim(t_map *map)
 {
 	int		h;
 	int		w;
-	int		len;
 
 	h = -1;
 	while (map->content[++h])
 	{
 		w = ft_strlen(map->content[h]);
 		if (map->content[h + 1])
-			if (w != ft_strlen(map->content[h + 1]))
+			if (w != (int)ft_strlen(map->content[h + 1]))
 				return (NOT_VALID);
 	}
 	if (h >= w)

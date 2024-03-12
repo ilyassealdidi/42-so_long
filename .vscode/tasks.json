@@ -13,16 +13,17 @@
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
                 "-g",
-                "${workspaceFolder}/src/main.c",
-                "${workspaceFolder}/src/utils.c",
-                "${workspaceFolder}/src/parse.c",
-                "${workspaceFolder}/src/window.c",
-                "${workspaceFolder}/src/gameplay.c",
-                "${workspaceFolder}/src/map.c",
+                "${workspaceFolder}/bonus/src/main_bonus.c",
+                "${workspaceFolder}/bonus/src/utils_bonus.c",
+                "${workspaceFolder}/bonus/src/parse_bonus.c",
+                "${workspaceFolder}/bonus/src/window_bonus.c",
+                "${workspaceFolder}/bonus/src/gameplay_bonus.c",
+                "${workspaceFolder}/bonus/src/map_bonus.c",
                 "${workspaceFolder}/helpers/get_next_line/get_next_line.c",
                 "${workspaceFolder}/helpers/libft/libft.a",
+                "${workspaceFolder}/helpers/ft_printf/libftprintf.a",
                 "-o",
-                "${workspaceFolder}/so_long"
+                "${workspaceFolder}/so_long_bonus"
             ],
             "options": {
                 "cwd": "${fileDirname}"

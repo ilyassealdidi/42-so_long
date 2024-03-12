@@ -1,6 +1,10 @@
 NAME = so_long
 
+B_NAME = so_long_bonus
+
 SRCS = src/*.c helpers/get_next_line/get_next_line.c
+
+B_SRCS = bonus/src/*.c helpers/get_next_line/get_next_line.c
 
 LIBRARY = -lmlx -framework OpenGL -framework AppKit
 
@@ -23,6 +27,11 @@ $(LIBFT):
 $(FT_PRINTF):
 	make -C helpers/ft_printf/
 
+bonus: $(B_NAME)
+
+$(B_NAME) : $(B_SRCS) $(LIBFT) $(FT_PRINTF) bonus/includes/so_long_bonus.h includes/dictionnary.h
+	cc $(CFLAGS) $(B_SRCS) $(LIBRARY) $(LIBFT) $(FT_PRINTF) -o $(B_NAME)
+
 clean :
 	make clean -C helpers/libft/
 	make clean -C helpers/ft_printf/
@@ -30,7 +39,7 @@ clean :
 fclean :
 	make fclean -C helpers/libft/
 	make fclean -C helpers/ft_printf/
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(B_NAME)
 
 re : fclean all
 

@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:59:11 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 11:30:55 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 14:08:04 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 # define IMG_PLAYER "textures/PLAYER.xpm"
 # define IMG_COLLECTIBLE "textures/COLLECTIBLE.xpm"
 # define IMG_EXIT "textures/EXIT.xpm"
+# define IMG_PLAYER_W "textures/PLAYER_W.xpm"
+# define IMG_PLAYER_A "textures/PLAYER_A.xpm"
+# define IMG_PLAYER_S "textures/PLAYER_S.xpm"
+# define IMG_PLAYER_D "textures/PLAYER_D.xpm"
+# define IMG_ENEMY "textures/ENEMY.xpm"
 
 # define BLOCK_SIZE 32
 

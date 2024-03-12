@@ -6,11 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:25:09 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 11:41:30 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 19:34:44 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	free_array(char **arr)
 {
@@ -42,9 +42,9 @@ int	main(int argc, char **av)
 {
 	t_object	obj;
 
+	obj.keycode = 0;
 	if (argc != 2)
 		raise_error("Invalid format, try: [./program] [map_filename]", 0, NULL);
 	parse(&obj, av[1]);
 	load_window(&obj);
 }
-

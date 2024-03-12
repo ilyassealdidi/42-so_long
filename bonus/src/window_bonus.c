@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:14:00 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 12:48:24 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 15:44:20 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ void	print_moves(t_object *obj)
 	num = ft_itoa(obj->player->moves);
 	if (!num)
 		return (raise_error(0, errno, obj));
-	str = ft_strjoin("Number of moves : ", num);
+	str = ft_strdup("Number of moves : ");
 	if (!str)
-		return (raise_error(0, errno, obj));
+		return (free(num), raise_error(0, errno, obj));
+	str = ft_strjoin(str, num);
+	if (!str)
+		return (free(num), raise_error(0, errno, obj));
 	mlx_string_put(obj->mlx, obj->win, 5, 5, 0xFFFFFFFF, str);
 	free(num);
 	free(str);
@@ -41,25 +44,27 @@ void	print_moves(t_object *obj)
 static void	*get_image(t_object *obj, char c)
 {
 	void	*img;
-	char	*path;
 	int		var;
 
-	path = (char *)malloc(20);
-	if (path)
-		raise_error(NULL, errno, obj);
 	if (c == '1')
-		path = IMG_WALL;
+		img = IMG_WALL;
 	else if (c == '0')
-		path = IMG_SPACE;
-	else if (c == 'P')
-		path = ft_strlcat(path, );
+		img = IMG_SPACE;
+	else if (c == 'P' && obj->keycode == W_KEY)
+		img = IMG_PLAYER_W;
+	else if (c == 'P' && obj->keycode == A_KEY)
+		img = IMG_PLAYER_A;
+	else if (c == 'P' && obj->keycode == S_KEY)
+		img = IMG_PLAYER_S;
+	else if (c == 'P' && obj->keycode == D_KEY)
+		img = IMG_PLAYER_D;
 	else if (c == 'C')
-		path = IMG_COLLECTIBLE;
+		img = IMG_COLLECTIBLE;
 	else if (c == 'N')
-		path = IMG_ENEMY;
+		img = IMG_ENEMY;
 	else
-		path = IMG_EXIT;
-	img = mlx_xpm_file_to_image(obj->mlx, path, &var, &var);
+		img = IMG_EXIT;
+	img = mlx_xpm_file_to_image(obj->mlx, img, &var, &var);
 	if (!img)
 		raise_error(NULL, errno, obj);
 	return (img);
@@ -80,8 +85,7 @@ static void	render_map(t_object *obj)
 		x = -1;
 		while (map[y][++x])
 		{
-			img = get_image(obj->mlx, map[y][x],
-					x * BLOCK_SIZE, y * BLOCK_SIZE);
+			img = get_image(obj->mlx, map[y][x]);
 			mlx_put_image_to_window(obj->mlx, obj->win, img,
 				x * BLOCK_SIZE, y * BLOCK_SIZE);
 			mlx_destroy_image(obj->mlx, img);
@@ -119,5 +123,6 @@ void	load_window(t_object	*obj)
 	render_map(obj);
 	mlx_hook(obj->win, ON_KEYDOWN, 0, keydown_handler, obj);
 	mlx_hook(obj->win, ON_DESTROY, 0, exiter, obj);
+	ft_printf("___________\n");
 	mlx_loop(obj->mlx);
 }

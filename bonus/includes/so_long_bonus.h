@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:39:15 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 12:42:30 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 14:43:41 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <mlx.h>
 # include <errno.h>
 # include <fcntl.h>
-# include "../helpers/libft/libft.h"
-# include "../helpers/ft_printf/includes/libftprintf.h"
-# include "../includes/dictionnary.h"
+# include "../../helpers/libft/libft.h"
+# include "../../helpers/ft_printf/includes/libftprintf.h"
+# include "../../includes/dictionnary.h"
 
 typedef struct s_point
 {
@@ -38,7 +38,6 @@ typedef struct s_map
 typedef struct s_player
 {
 	t_point			position;
-	t_point			last_position;
 	unsigned int	moves;
 }	t_player;
 

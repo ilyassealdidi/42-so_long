@@ -6,12 +6,11 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:33:50 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 12:39:57 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/12 14:48:32 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
-
 
 static void	init_player(t_object *obj, int x, int y)
 {
@@ -20,7 +19,7 @@ static void	init_player(t_object *obj, int x, int y)
 	p = (t_player *)malloc(sizeof(t_player));
 	if (!p)
 		return (raise_error(NULL, errno, obj));
-	set_point(&p->last_position, x, y);
+	set_point(&p->position, x, y);
 	p->moves = 0;
 	obj->player = p;
 }
