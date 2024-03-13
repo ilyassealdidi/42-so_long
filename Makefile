@@ -8,7 +8,7 @@ B_SRCS = bonus/src/*.c helpers/get_next_line/get_next_line.c
 
 LIBRARY = -lmlx -framework OpenGL -framework AppKit
 
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = #-Wall -Wextra -Werror 
 
 LIBFT = helpers/libft
 

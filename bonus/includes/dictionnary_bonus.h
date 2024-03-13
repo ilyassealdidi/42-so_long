@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dictionnary.h                                      :+:      :+:    :+:   */
+/*   dictionnary_bonus.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:59:11 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/13 11:53:48 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/13 11:50:09 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DICTIONNARY_H
-# define DICTIONNARY_H
+#ifndef DICTIONNARY_BONUS_H
+# define DICTIONNARY_BONUS_H
 
 # define WINDOW_TITLE "Sooo loooooong!"
 # define VICTORY_MESSAGE "Congratulations!!"
+# define LOSS_MESSAGE "Game over!!"
 
-# define IMG_SPACE "textures/SPACE.xpm"
-# define IMG_WALL "textures/WALL.xpm"
-# define IMG_PLAYER "textures/PLAYER.xpm"
-# define IMG_COLLECTIBLE "textures/COLLECTIBLE.xpm"
-# define IMG_EXIT "textures/EXIT.xpm"
-# define IMG_ENEMY "textures/ENEMY.xpm"
+# define IMG_SPACE "bonus/textures/SPACE.xpm"
+# define IMG_WALL "bonus/textures/WALL.xpm"
+# define IMG_COLLECTIBLE "bonus/textures/COLLECTIBLE.xpm"
+# define IMG_EXIT "bonus/textures/EXIT.xpm"
+# define IMG_PLAYER_W "bonus/textures/PLAYER_W.xpm"
+# define IMG_PLAYER_A "bonus/textures/PLAYER_A.xpm"
+# define IMG_PLAYER_S "bonus/textures/PLAYER_S.xpm"
+# define IMG_PLAYER_D "bonus/textures/PLAYER_D.xpm"
+# define IMG_ENEMY "bonus/textures/ENEMY.xpm"
 
 # define BLOCK_SIZE 32
 

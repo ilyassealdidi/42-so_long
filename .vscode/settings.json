@@ -18,6 +18,7 @@
 		"dictionnary_bonus.h": "c",
 		"__node_handle": "c",
 		"__functional_03": "c",
-		"functional": "c"
+		"functional": "c",
+		"libftprintf.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:39:52 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 12:41:18 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/13 12:09:48 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	move_player(t_object *obj, t_point pos)
 	map = obj->map->content;
 	if (is_movable(obj, map[p->position.y + pos.y][p->position.x + pos.x]))
 	{
-		//set_point(&p->last_position, p->position.x, p->position.y);
 		set_point(&p->position, p->position.x + pos.x, p->position.y + pos.y);
 		ft_printf("%d Moves\n", ++p->moves);
 		if (map[p->position.y][p->position.x] == 'E')
