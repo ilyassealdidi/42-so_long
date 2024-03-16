@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:14:00 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/13 12:55:34 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/16 16:09:08 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	render_map(t_object *obj)
 		x = -1;
 		while (map[y][++x])
 		{
-			img = get_image(obj->mlx, map[y][x], obj->keycode);
+			img = get_image(obj, map[y][x], obj->keycode);
 			mlx_put_image_to_window(obj->mlx, obj->win, img,
 				x * BLOCK_SIZE, y * BLOCK_SIZE);
 			mlx_destroy_image(obj->mlx, img);

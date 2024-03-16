@@ -6,7 +6,7 @@ SRCS = src/main.c src/map.c src/gameplay.c src/parse.c src/utils.c src/window.c 
 
 OBJS = $(SRCS:.c=.o)
 
-B_SRCS = bonus/src/main.c bonus/src/map.c bonus/src/gameplay.c bonus/src/parse.c bonus/src/utils.c bonus/src/window.c \
+B_SRCS = bonus/src/main_bonus.c bonus/src/map_bonus.c bonus/src/gameplay_bonus.c bonus/src/parse_bonus.c bonus/src/utils_bonus.c bonus/src/window_bonus.c \
 		helpers/get_next_line/get_next_line.c
 
 LIBRARY = -lmlx -framework OpenGL -framework AppKit
