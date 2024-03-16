@@ -19,6 +19,7 @@
 		"__node_handle": "c",
 		"__functional_03": "c",
 		"functional": "c",
-		"libftprintf.h": "c"
+		"libftprintf.h": "c",
+		"errno.h": "c"
 	}
 }

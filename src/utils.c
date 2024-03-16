@@ -6,34 +6,55 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:41:38 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 11:26:34 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/16 12:42:16 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/**
+ * Sets the coordinates of a point.
+ *
+ * @param p The point to set the coordinates for.
+ * @param x The x-coordinate value.
+ * @param y The y-coordinate value.
+ */
 void	set_point(t_point *p, int x, int y)
 {
 	p->x = x;
 	p->y = y;
 }
 
-static void	destroy_object(t_object *obj)
+/**
+ * This function opens a file specified by the given path and returns
+ * the file descriptor.
+ * It also performs a check on the file extension to ensure it is a ".ber" file.
+ *
+ * @param path The path of the file to be opened.
+ * @return The file descriptor of the opened file, or -1 if an error occurs.
+ */
+int	get_file(char *path)
 {
-	free_array(obj->map->content);
-	free(obj->map);
-	free(obj->player);
-	//mlx_destroy_window(obj->mlx, obj->win);
+	int		fd;
+	int		len;
+
+	len = ft_strlen(path);
+	if (len < 4 || ft_strncmp(path + len - 4, ".ber", 4))
+		raise_error("Allowed extension: *.ber", 0, NULL);
+	fd = open(path, O_RDONLY);
+	return (fd * (fd != -1));
 }
 
-int	exiter(t_object *obj)
-{
-	destroy_object(obj);
-	exit(0);
-	return (0);
-}
-
-void	flood_fill(char	**map, int i, int j)
+/**
+ * Recursively performs flood fill algorithm on a map starting from
+ * position (i, j). Replaces all connected cells with '1' until it reaches
+ * the boundary or an obstacle ('1').
+ *
+ * @param map The map represented as a 2D array of characters.
+ * @param i The row index of the starting position.
+ * @param j The column index of the starting position.
+ */
+void	flood_fill(char **map, int i, int j)
 {
 	if (map[i][j] == 'E')
 		map[i][j] = '1';
@@ -47,14 +68,21 @@ void	flood_fill(char	**map, int i, int j)
 	}
 }
 
-void	raise_error(char *msg, int err, t_object *obj)
+/**
+ * Frees a dynamically allocated array of strings.
+ * 
+ * @param arr The array of strings to be freed.
+ */
+void	free_array(char **arr)
 {
-	ft_printf("Error\n");
-	if (msg)
-		ft_printf("%s", msg);
-	if (err)
-		ft_printf("%s", strerror(err));
-	if (obj)
-		destroy_object(obj);
-	exit(1);
+	int	i;
+
+	i = -1;
+	while (1)
+	{
+		free(arr[++i]);
+		if (!arr[i])
+			break ;
+	}
+	free(arr);
 }

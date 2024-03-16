@@ -6,12 +6,19 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:14:00 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 12:44:12 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/16 12:41:45 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/**
+ * Retrieves the image corresponding to the given character.
+ *
+ * @param obj The object containing the mlx instance.
+ * @param c The character representing the type of image to retrieve.
+ * @return A pointer to the image.
+ */
 static void	*get_image(t_object *obj, char c)
 {
 	void	*img;
@@ -34,6 +41,11 @@ static void	*get_image(t_object *obj, char c)
 	return (img);
 }
 
+/**
+ * Renders the map on the window.
+ * 
+ * @param obj The object containing the map and window information.
+ */
 static void	render_map(t_object *obj)
 {
 	void	*img;
@@ -43,7 +55,6 @@ static void	render_map(t_object *obj)
 
 	map = obj->map->content;
 	y = -1;
-	mlx_clear_window(obj->mlx, obj->win);
 	while (map[++y])
 	{
 		x = -1;
@@ -57,6 +68,13 @@ static void	render_map(t_object *obj)
 	}
 }
 
+/**
+ * Handles keydown events and performs corresponding actions.
+ * 
+ * @param key The key code of the pressed key.
+ * @param obj A pointer to the t_object structure.
+ * @return 0 indicating success.
+ */
 static int	keydown_handler(int key, t_object *obj)
 {
 	t_point	next_pos;
@@ -65,15 +83,22 @@ static int	keydown_handler(int key, t_object *obj)
 	{
 		if (key == ESC_KEY)
 			exiter(obj);
-		set_point(&next_pos, -1 * (key == A_KEY) + (key == D_KEY),
-			-1 * (key == W_KEY) + (key == S_KEY));
+		next_pos.x = -1 * (key == A_KEY) + (key == D_KEY);
+		next_pos.y = -1 * (key == W_KEY) + (key == S_KEY);
 		if (move_player(obj, next_pos))
 			render_map(obj);
 	}
 	return (0);
 }
 
-void	load_window(t_object	*obj)
+/**
+ * Loads the window and initializes the necessary components,
+ * Sets up the event handlers, and calls the render_map
+ * function to display the map on the window
+ * 
+ * @param obj The object containing the necessary data for window initialization.
+ */
+void	load_window(t_object *obj)
 {
 	obj->mlx = mlx_init();
 	if (!obj->mlx)

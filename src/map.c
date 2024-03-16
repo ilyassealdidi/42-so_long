@@ -6,12 +6,21 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:18:35 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 10:31:25 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/16 12:28:45 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/**
+ * @brief Sets the dimensions of the map.
+ * 
+ * This function calculates the height and width of the map based on the content.
+ * 
+ * @param map A pointer to the map structure.
+ * @return Returns 1 if the map dimensions are successfully set, returns 0 if
+ * the map is invalid.
+ */
 static int	set_map_dim(t_map *map)
 {
 	int		h;
@@ -30,6 +39,18 @@ static int	set_map_dim(t_map *map)
 	return (VALID);
 }
 
+/**
+ * @brief Retrieves the map content from a file descriptor.
+ * 
+ * This function reads the lines from the file descriptor `fd` and concatenates
+ * them into a single string `content`. The lines are validated to ensure
+ * they only contain valid characters ('0', '1', 'E', 'C', 'P', '\n')
+ * and start with '1'. If any invalid line is encountered, the function
+ * frees the allocated memory and returns NULL.
+ * 
+ * @param fd The file descriptor to read from.
+ * @return A pointer to the map content string if successful, NULL otherwise.
+ */
 static char	*get_map(int fd)
 {
 	char	*line;
@@ -56,6 +77,12 @@ static char	*get_map(int fd)
 	return (content);
 }
 
+/**
+ * Initializes a map structure by allocating memory and setting its content.
+ * 
+ * @param fd The file descriptor of the map file.
+ * @return A pointer to the initialized map structure.
+ */
 t_map	*init_map(int fd)
 {
 	char	*content;
@@ -72,10 +99,11 @@ t_map	*init_map(int fd)
 	}
 	map->content = ft_split(content, '\n');
 	if (!map->content)
-		raise_error(NULL, ENOMEM, NULL);
+		(free(map), free(content), raise_error(NULL, errno, NULL));
 	free(content);
 	if (!set_map_dim(map))
-		raise_error("Invalid map dimensions", 0, NULL);
+		(free_array(map->content), free(map),
+			raise_error("Invalid map dimensions", 0, NULL));
 	map->collects = 0;
 	set_point(&map->exit, 0, 0);
 	return (map);

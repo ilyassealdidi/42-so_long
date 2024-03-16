@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:41:38 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 11:57:59 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/16 12:42:40 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	destroy_object(t_object *obj)
 	free_array(obj->map->content);
 	free(obj->map);
 	free(obj->player);
-	//mlx_destroy_window(obj->mlx, obj->win);
+	mlx_destroy_window(obj->mlx, obj->win);
 }
 
 int	exiter(t_object *obj)

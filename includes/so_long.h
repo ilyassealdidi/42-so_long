@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:39:15 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 11:25:02 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/16 12:13:31 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ char	*get_next_line(int fd);
 void	free_array(char **arr);
 void	set_point(t_point *p, int x, int y);
 void	flood_fill(char	**map, int i, int j);
+void	destroy_object(t_object *obj);
 void	raise_error(char *msg, int err, t_object *obj);
 int		exiter(t_object *obj);
-int		is_valid_file(char *filename);
+int		get_file(char *filename);
 
 /* Parsing */
 void	parse(t_object *object, char *path);
