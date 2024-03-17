@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:14:00 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/17 13:11:15 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/17 15:19:13 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void	print_moves(t_object *obj)
 	int		j;
 
 	i = -1;
-	while (++i < 255)
+	while (++i < 130)
 	{
 		j = -1;
 		while (++j < BLOCK_SIZE)
-			mlx_pixel_put(obj->mlx, obj->win, i, j, i << 24);
+			mlx_pixel_put(obj->mlx, obj->win, i, j, i << 25);
 	}
 	num = ft_itoa(obj->player->moves);
 	if (!num)
 		return (raise_error(0, errno, obj));
-	str = ft_strdup("Number of moves : ");
+	str = ft_strdup("Moves : ");
 	if (!str)
 		return (free(num), raise_error(0, errno, obj));
 	str = ft_strjoin(str, num);

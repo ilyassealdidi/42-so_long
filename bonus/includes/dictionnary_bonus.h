@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:59:11 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/17 13:23:11 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/17 14:32:25 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 # define IMG_SPACE "bonus/textures/SPACE.xpm"
 # define IMG_WALL "bonus/textures/WALL.xpm"
 # define IMG_COLLECTIBLE "bonus/textures/COLLECTIBLE.xpm"
-# define IMG_EXIT "bonus/textures/EXIT_CLOSED.xpm"
-# define IMG_EXIT_OPEN "bonus/textures/EXIT_OPEN.xpm"
+# define IMG_EXIT "bonus/textures/EXIT.xpm"
 # define IMG_PLAYER_W "bonus/textures/PLAYER_UP.xpm"
 # define IMG_PLAYER_A "bonus/textures/PLAYER_LEFT.xpm"
 # define IMG_PLAYER_S "bonus/textures/PLAYER_DOWN.xpm"
