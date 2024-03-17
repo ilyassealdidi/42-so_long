@@ -19,9 +19,9 @@
                 "${workspaceFolder}/bonus/src/window_bonus.c",
                 "${workspaceFolder}/bonus/src/gameplay_bonus.c",
                 "${workspaceFolder}/bonus/src/map_bonus.c",
-                "${workspaceFolder}/helpers/get_next_line/get_next_line.c",
-                "${workspaceFolder}/helpers/libft/libft.a",
-                "${workspaceFolder}/helpers/ft_printf/libftprintf.a",
+                "${workspaceFolder}/lib/get_next_line/get_next_line.c",
+                "${workspaceFolder}/lib/libft/libft.a",
+                "${workspaceFolder}/lib/ft_printf/libftprintf.a",
                 "-o",
                 "${workspaceFolder}/so_long_bonus"
             ],

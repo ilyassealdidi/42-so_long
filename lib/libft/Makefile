@@ -6,7 +6,7 @@
 #    By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/01 15:34:00 by ialdidi           #+#    #+#              #
-#    Updated: 2024/03/12 10:53:51 by ialdidi          ###   ########.fr        #
+#    Updated: 2024/03/17 14:17:03 by ialdidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,15 +29,15 @@ NAME			= libft.a
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS)
-				$(ARC) $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	@$(ARC) $(NAME) $(OBJS)
 
-%.o 			: %.c $(LIBRARY)
-				$(CC) $(CFLAGS) -o $@ -c $<
+%.o: %.c $(LIBRARY)
+	@$(CC) $(CFLAGS) -o $@ -c $<
 clean:
-				$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 				
-fclean:			clean
-				$(RM) $(NAME)
+fclean: clean
+	@$(RM) $(NAME)
 				
 re:				fclean all

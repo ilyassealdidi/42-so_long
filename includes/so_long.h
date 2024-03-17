@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:39:15 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/16 12:13:31 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/17 14:15:27 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <mlx.h>
 # include <errno.h>
 # include <fcntl.h>
-# include "../helpers/libft/libft.h"
-# include "../helpers/ft_printf/includes/libftprintf.h"
+# include "../lib/libft/libft.h"
+# include "../lib/ft_printf/includes/libftprintf.h"
 # include "dictionnary.h"
 
 typedef struct s_point
