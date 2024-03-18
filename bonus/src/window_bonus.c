@@ -6,13 +6,13 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:14:00 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/17 15:19:13 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/18 12:48:45 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-void	print_moves(t_object *obj)
+static void	print_moves(t_object *obj)
 {
 	char	*str;
 	char	*num;
