@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:39:15 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/17 14:15:27 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/19 18:09:06 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # include "dictionnary_bonus.h"
 # include "../../lib/libft/libft.h"
 # include "../../lib/ft_printf/includes/libftprintf.h"
+
+typedef struct s_image_list
+{
+	char				*key;
+	char				*value;
+	struct s_image_list	*next;
+}		t_image_list;
 
 typedef struct s_point
 {
@@ -66,6 +73,7 @@ void	parse(t_object *object, char *path);
 t_map	*init_map(int fd);
 /* Graphics */
 void	load_window(t_object	*obj);
+int		coin_animation(t_object *obj);
 /* Gameplay */
 int		move_player(t_object *obj, t_point pos);
 

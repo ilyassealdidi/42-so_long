@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:14:00 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/18 12:48:45 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/19 18:08:58 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ static void	*get_image(t_object *obj, char c, int direction)
 		img = IMG_PLAYER_S;
 	else if (c == 'P' && direction == D_KEY)
 		img = IMG_PLAYER_D;
-	else if (c == 'C')
-		img = IMG_COLLECTIBLE;
 	else if (c == 'N')
 		img = IMG_ENEMY;
-	else
+	else if (c == 'E')
 		img = IMG_EXIT;
+	else
+		return (NULL);
 	img = mlx_xpm_file_to_image(obj->mlx, (char *)img, &var, &var);
 	if (!img)
 		raise_error(NULL, errno, obj);
@@ -78,16 +78,18 @@ static void	render_map(t_object *obj)
 
 	map = obj->map->content;
 	y = -1;
-	mlx_clear_window(obj->mlx, obj->win);
 	while (map[++y])
 	{
 		x = -1;
 		while (map[y][++x])
 		{
 			img = get_image(obj, map[y][x], obj->keycode);
-			mlx_put_image_to_window(obj->mlx, obj->win, img,
-				x * BLOCK_SIZE, y * BLOCK_SIZE);
-			mlx_destroy_image(obj->mlx, img);
+			if (img)
+			{
+				mlx_put_image_to_window(obj->mlx, obj->win, img,
+					x * BLOCK_SIZE, y * BLOCK_SIZE);
+				mlx_destroy_image(obj->mlx, img);
+			}
 		}
 	}
 	print_moves(obj);
@@ -120,6 +122,7 @@ void	load_window(t_object	*obj)
 	if (!obj->win)
 		raise_error(0, ENOMEM, obj);
 	render_map(obj);
+	mlx_loop_hook(obj->mlx, coin_animation, obj);
 	mlx_hook(obj->win, ON_KEYDOWN, 0, keydown_handler, obj);
 	mlx_hook(obj->win, ON_DESTROY, 0, exiter, obj);
 	mlx_loop(obj->mlx);

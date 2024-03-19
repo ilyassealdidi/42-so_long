@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:41:38 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/16 12:42:40 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/19 01:42:42 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	flood_fill(char	**map, int i, int j)
 
 void	raise_error(char *msg, int err, t_object *obj)
 {
-	ft_printf("Error\n");
+	ft_putstr_fd("Error\n", 2);
 	if (msg)
-		ft_printf("%s", msg);
+		ft_putstr_fd(msg, 2);
 	if (err)
-		ft_printf("%s", strerror(err));
+		ft_putstr_fd(strerror(err), 2);
 	if (obj)
 		destroy_object(obj);
 	exit(1);

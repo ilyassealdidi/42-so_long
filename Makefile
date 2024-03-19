@@ -6,7 +6,7 @@ SRCS = src/main.c src/map.c src/gameplay.c src/parse.c src/utils.c src/window.c 
 
 OBJS = $(SRCS:.c=.o)
 
-B_SRCS = bonus/src/main_bonus.c bonus/src/map_bonus.c bonus/src/gameplay_bonus.c bonus/src/parse_bonus.c bonus/src/utils_bonus.c bonus/src/window_bonus.c \
+B_SRCS = bonus/src/main_bonus.c bonus/src/map_bonus.c bonus/src/gameplay_bonus.c bonus/src/parse_bonus.c bonus/src/window_utils_bonus.c bonus/src/utils_bonus.c bonus/src/window_bonus.c \
 		lib/get_next_line/get_next_line.c
 
 B_OBJS = $(B_SRCS:.c=.o)

@@ -17,6 +17,7 @@
                 "${workspaceFolder}/bonus/src/utils_bonus.c",
                 "${workspaceFolder}/bonus/src/parse_bonus.c",
                 "${workspaceFolder}/bonus/src/window_bonus.c",
+                "${workspaceFolder}/bonus/src/window_utils_bonus.c",
                 "${workspaceFolder}/bonus/src/gameplay_bonus.c",
                 "${workspaceFolder}/bonus/src/map_bonus.c",
                 "${workspaceFolder}/lib/get_next_line/get_next_line.c",

@@ -14,7 +14,7 @@
 				"type": "cppdbg",
 				"request": "launch",
 				"program": "${workspaceFolder}/so_long_bonus",
-				"args": ["../../maps/map.ber"],
+				"args": ["../../maps/map_bonus.ber"],
 				"stopAtEntry": false,
 				"cwd": "${fileDirname}",
 				"environment": [],

@@ -20,6 +20,9 @@
 		"__functional_03": "c",
 		"functional": "c",
 		"libftprintf.h": "c",
-		"errno.h": "c"
+		"errno.h": "c",
+		"fcntl.h": "c",
+		"memory": "c",
+		"utility": "c"
 	}
 }
