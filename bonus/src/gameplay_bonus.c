@@ -6,12 +6,20 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:39:52 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/13 12:09:48 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/20 01:56:56 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
+/**
+ * Checks if an object is movable based on the given character.
+ * updates the content of the map at the player's position to '0'.
+ *
+ * @param obj The object to check movability for.
+ * @param c The character to check.
+ * @return 1 if the object is movable, 0 otherwise.
+ */
 static int	is_movable(t_object *obj, char c)
 {
 	t_player	*p;
@@ -27,6 +35,13 @@ static int	is_movable(t_object *obj, char c)
 	return (1);
 }
 
+/**
+ * Moves the player in the game based on the given position.
+ * 
+ * @param obj The game object.
+ * @param pos The position to move the player to.
+ * @return 1 if the player was successfully moved, 0 otherwise.
+ */
 int	move_player(t_object *obj, t_point pos)
 {
 	t_player	*p;

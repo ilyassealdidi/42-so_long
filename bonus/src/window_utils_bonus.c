@@ -6,24 +6,19 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 18:23:22 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/19 18:13:45 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/20 02:34:29 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
-#include <time.h>
 
-// void	draw_line(t_object *obj)
-// {
-// 	int	i;
-// 	while ();
-// }
 
-// void	opening_animation(t_object *obj)
-// {
-	
-// }
-
+/**
+ * Renders the coins on the game window.
+ * 
+ * @param obj The object containing the game information.
+ * @param img The image of the coin.
+ */
 static void	render_coin(t_object *obj, void *img)
 {
 	char	**map;
@@ -46,6 +41,12 @@ static void	render_coin(t_object *obj, void *img)
 	}
 }
 
+/**
+ * Performs a coin animation for a given object.
+ * 
+ * @param obj The object for which the coin animation is performed.
+ * @return Returns 0 if the coin animation is successfully performed.
+ */
 int	coin_animation(t_object *obj)
 {
 	char			path[23];
@@ -56,7 +57,7 @@ int	coin_animation(t_object *obj)
 
 	if (!obj->map->collects)
 		return (0);
-	if (clock() - time >= 8000)
+	if (time == 0 || clock() - time >= 10000)
 	{
 		i = i * (i != 15);
 		ft_strlcpy(path, "bonus/textures/c__.xpm", 23);

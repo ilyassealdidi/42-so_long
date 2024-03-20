@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:07:44 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/12 10:52:58 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/20 02:31:40 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ static void	read_line(int fd, char **str)
 	int		rd;
 
 	nl = NULL;
-	buffer = malloc(1000 + 1);
+	buffer = malloc(2);
 	if (!buffer)
 		return (free(*str), (void)(*str = NULL));
 	while (!nl)
 	{
-		rd = read(fd, buffer, 1000);
+		rd = read(fd, buffer, 1);
 		if (rd <= 0)
 		{
 			free(buffer);

@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:39:15 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/19 18:09:06 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/20 02:23:04 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <mlx.h>
 # include <errno.h>
-# include <stdio.h>
+# include <time.h>
 # include <fcntl.h>
 # include "dictionnary_bonus.h"
 # include "../../lib/libft/libft.h"
@@ -40,6 +40,7 @@ typedef struct s_map
 	int				height;
 	int				width;
 	unsigned int	collects;
+	unsigned int	enemies;
 	t_point			exit;
 }	t_map;
 

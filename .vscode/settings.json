@@ -23,6 +23,7 @@
 		"errno.h": "c",
 		"fcntl.h": "c",
 		"memory": "c",
-		"utility": "c"
+		"utility": "c",
+		"stdio.h": "c"
 	}
 }

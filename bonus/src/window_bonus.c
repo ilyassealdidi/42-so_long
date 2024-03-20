@@ -6,12 +6,20 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:14:00 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/19 18:08:58 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/20 02:35:20 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
+/**
+ * @brief Prints the moves on the window.
+ * 
+ * This function is responsible for printing the number of moves on the window.
+ * It fills the window with a color gradient and displays the moves as text.
+ * 
+ * @param obj A pointer to the object structure.
+ */
 static void	print_moves(t_object *obj)
 {
 	char	*str;
@@ -29,7 +37,7 @@ static void	print_moves(t_object *obj)
 	num = ft_itoa(obj->player->moves);
 	if (!num)
 		return (raise_error(0, errno, obj));
-	str = ft_strdup("Moves : ");
+	str = ft_strdup("Moves: ");
 	if (!str)
 		return (free(num), raise_error(0, errno, obj));
 	str = ft_strjoin(str, num);
@@ -40,6 +48,15 @@ static void	print_moves(t_object *obj)
 	free(str);
 }
 
+/**
+ * Retrieves the image corresponding to the given character and direction.
+ * 
+ * @param obj The object containing the mlx instance.
+ * @param c The character representing the object in the game map.
+ * @param direction The direction of the player.
+ * @return A pointer to the image corresponding to the character, 
+ * or NULL if no image is found.
+ */
 static void	*get_image(t_object *obj, char c, int direction)
 {
 	void	*img;
@@ -69,6 +86,11 @@ static void	*get_image(t_object *obj, char c, int direction)
 	return (img);
 }
 
+/**
+ * Renders the map on the window.
+ * 
+ * @param obj The object containing the map and window information.
+ */
 static void	render_map(t_object *obj)
 {
 	void	*img;
@@ -95,6 +117,13 @@ static void	render_map(t_object *obj)
 	print_moves(obj);
 }
 
+/**
+ * Handles keydown events and performs corresponding actions.
+ * 
+ * @param key The key code of the pressed key.
+ * @param obj A pointer to the t_object structure.
+ * @return 0 indicating success.
+ */
 static int	keydown_handler(int key, t_object *obj)
 {
 	t_point	next_pos;
@@ -112,6 +141,13 @@ static int	keydown_handler(int key, t_object *obj)
 	return (0);
 }
 
+/**
+ * Loads the window and initializes the necessary components,
+ * Sets up the event handlers, and calls the render_map
+ * function to display the map on the window
+ * 
+ * @param obj The object containing the necessary data for window initialization.
+ */
 void	load_window(t_object	*obj)
 {
 	obj->mlx = mlx_init();
@@ -122,8 +158,8 @@ void	load_window(t_object	*obj)
 	if (!obj->win)
 		raise_error(0, ENOMEM, obj);
 	render_map(obj);
-	mlx_loop_hook(obj->mlx, coin_animation, obj);
 	mlx_hook(obj->win, ON_KEYDOWN, 0, keydown_handler, obj);
 	mlx_hook(obj->win, ON_DESTROY, 0, exiter, obj);
+	mlx_loop_hook(obj->mlx, coin_animation, obj);
 	mlx_loop(obj->mlx);
 }
