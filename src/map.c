@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:18:35 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/20 15:42:30 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/20 17:59:28 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_map	*init_map(int fd)
 	if (!content)
 	{
 		free(map);
-		raise_error("Extra characters are included in the map", 0, NULL);
+		raise_error("Empty file or Extra characters included", 0, NULL);
 	}
 	map->content = ft_split(content, '\n');
 	if (!map->content)

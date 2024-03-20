@@ -58,14 +58,14 @@ re : fclean all
 
 run : re
 	@if [ -f maps/map.ber ]; then \
-		./so_long maps/map.ber; \
+		./so_long maps/map.ber; echo ""; \
 	else \
 		echo "Missing file: maps/map.ber"; \
 	fi
 
 run_bonus : fclean bonus
 	@if [ -f maps/map_bonus.ber ]; then \
-		./so_long_bonus maps/map_bonus.ber; \
+		./so_long_bonus maps/map_bonus.ber; echo ""; \
 	else \
 		echo "Missing file: maps/map_bonus.ber"; \
 	fi
