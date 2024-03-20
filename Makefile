@@ -55,3 +55,17 @@ fclean : clean
 	$(RM) $(NAME) $(B_NAME)
 
 re : fclean all
+
+run : re
+	@if [ -f maps/map.ber ]; then \
+		./so_long maps/map.ber; \
+	else \
+		echo "Missing file: maps/map.ber"; \
+	fi
+
+run_bonus : fclean bonus
+	@if [ -f maps/map_bonus.ber ]; then \
+		./so_long_bonus maps/map_bonus.ber; \
+	else \
+		echo "Missing file: maps/map_bonus.ber"; \
+	fi

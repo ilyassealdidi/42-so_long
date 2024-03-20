@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:18:35 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/19 13:44:26 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/20 15:42:30 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,15 @@ static char	*get_map(int fd)
 		if (!line)
 			break ;
 		if (line[0] != '1' || ft_strspn(line, "01ECP\n") != ft_strlen(line))
-			return (get_next_line(-1), free(line), free(content), NULL);
+			return (free(line), free(content), NULL);
 		content = ft_strjoin(content, line);
 		free(line);
 		if (!content)
-			(get_next_line(-1), raise_error(NULL, ENOMEM, NULL));
+			raise_error(NULL, ENOMEM, NULL);
 	}
 	close(fd);
+	if (!content)
+		return (NULL);
 	len = ft_strlen(content);
 	if (!len || content[len - 1] != '1')
 		return (NULL);

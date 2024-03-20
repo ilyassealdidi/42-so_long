@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:14:00 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/16 12:41:45 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/20 17:21:21 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,11 @@ void	load_window(t_object *obj)
 {
 	obj->mlx = mlx_init();
 	if (!obj->mlx)
-		raise_error(0, ENOMEM, obj);
+		raise_error(0, errno, obj);
 	obj->win = mlx_new_window(obj->mlx, obj->map->width * BLOCK_SIZE,
 			obj->map->height * BLOCK_SIZE, WINDOW_TITLE);
 	if (!obj->win)
-		raise_error(0, ENOMEM, obj);
+		raise_error(0, errno, obj);
 	render_map(obj);
 	mlx_hook(obj->win, ON_KEYDOWN, 0, keydown_handler, obj);
 	mlx_hook(obj->win, ON_DESTROY, 0, exiter, obj);

@@ -13,7 +13,7 @@
 				"name": "(lldb) Launch",
 				"type": "cppdbg",
 				"request": "launch",
-				"program": "${workspaceFolder}/so_long_bonus",
+				"program": "${workspaceFolder}/so_long",
 				"args": ["maps/map.ber"],
 				"stopAtEntry": false,
 				"cwd": "${workspaceFolder}",

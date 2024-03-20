@@ -24,6 +24,9 @@
 		"fcntl.h": "c",
 		"memory": "c",
 		"utility": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"__cxx_version": "c",
+		"__hash_table": "c",
+		"type_traits": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:14:00 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/20 02:35:20 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/20 17:04:23 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,8 @@ static int	keydown_handler(int key, t_object *obj)
 	{
 		if (key == ESC_KEY)
 			exiter(obj);
-		set_point(&next_pos, -1 * (key == A_KEY) + (key == D_KEY),
-			-1 * (key == W_KEY) + (key == S_KEY));
+		next_pos.x = -1 * (key == A_KEY) + (key == D_KEY);
+		next_pos.y = -1 * (key == W_KEY) + (key == S_KEY);
 		if (move_player(obj, next_pos))
 			render_map(obj);
 	}
@@ -152,13 +152,13 @@ void	load_window(t_object	*obj)
 {
 	obj->mlx = mlx_init();
 	if (!obj->mlx)
-		raise_error(0, ENOMEM, obj);
+		raise_error(0, errno, obj);
 	obj->win = mlx_new_window(obj->mlx, obj->map->width * BLOCK_SIZE,
 			obj->map->height * BLOCK_SIZE, WINDOW_TITLE);
 	if (!obj->win)
-		raise_error(0, ENOMEM, obj);
+		raise_error(0, errno, obj);
 	render_map(obj);
-	mlx_hook(obj->win, ON_KEYDOWN, 0, keydown_handler, obj);
+	mlx_hook(obj->win, ON_KEYDOWN, 1, keydown_handler, obj);
 	mlx_hook(obj->win, ON_DESTROY, 0, exiter, obj);
 	mlx_loop_hook(obj->mlx, coin_animation, obj);
 	mlx_loop(obj->mlx);
