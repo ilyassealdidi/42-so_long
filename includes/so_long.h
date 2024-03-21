@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:39:15 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/17 20:44:15 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/21 11:45:34 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "dictionnary.h"
 
 /**
+ * @struct t_point
  * @brief Represents a point in a 2D coordinate system.
  */
 typedef struct s_point

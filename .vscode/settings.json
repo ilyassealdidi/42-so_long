@@ -1,32 +1,5 @@
 {
 	"files.associations": {
-		"mlx.h": "c",
-		"stdlib.h": "c",
-		"unistd.h": "c",
-		"array": "c",
-		"iterator": "c",
-		"string": "c",
-		"string_view": "c",
-		"vector": "c",
-		"get_next_line.h": "c",
-		"libft.h": "c",
-		"so_long.h": "c",
-		"algorithm": "c",
-		"locale": "c",
-		"dictionnary.h": "c",
-		"so_long_bonus.h": "c",
-		"dictionnary_bonus.h": "c",
-		"__node_handle": "c",
-		"__functional_03": "c",
-		"functional": "c",
-		"libftprintf.h": "c",
-		"errno.h": "c",
-		"fcntl.h": "c",
-		"memory": "c",
-		"utility": "c",
-		"stdio.h": "c",
-		"__cxx_version": "c",
-		"__hash_table": "c",
-		"type_traits": "c"
+		"so_long_bonus.h": "c"
 	}
 }

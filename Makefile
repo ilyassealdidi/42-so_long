@@ -1,25 +1,14 @@
 NAME = so_long
-
 B_NAME = so_long_bonus
-
 SRCS = $(shell find src -name "*.c") lib/get_next_line/get_next_line.c
-
 OBJS = $(SRCS:.c=.o)
-
 B_SRCS = $(shell find bonus/src -name "*.c") lib/get_next_line/get_next_line.c
-
 B_OBJS = $(B_SRCS:.c=.o)
-
 LIBRARY = -lmlx -framework OpenGL -framework AppKit
-
 INC = includes/so_long.h includes/dictionnary.h
-
 B_INC = bonus/includes/so_long_bonus.h bonus/includes/dictionnary_bonus.h
-
 CFLAGS = -Wall -Wextra -Werror 
-
 LIBFT = lib/libft/libft.a
-
 FT_PRINTF = lib/ft_printf/libftprintf.a
 
 all : $(NAME)
