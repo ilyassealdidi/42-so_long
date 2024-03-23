@@ -6,7 +6,7 @@
 /*   By: ialdidi <ialdidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:25:09 by ialdidi           #+#    #+#             */
-/*   Updated: 2024/03/20 16:00:07 by ialdidi          ###   ########.fr       */
+/*   Updated: 2024/03/23 11:37:10 by ialdidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_object	*object_init(void)
 
 	obj = (t_object *)malloc(sizeof(t_object));
 	if (!obj)
-		raise_error(0, errno, NULL);
+		return (NULL);
 	obj->map = NULL;
 	obj->player = NULL;
 	obj->mlx = NULL;
@@ -46,6 +46,7 @@ void	destroy_object(t_object *obj)
 	free(obj->player);
 	if (obj->win)
 		mlx_destroy_window(obj->mlx, obj->win);
+	free(obj);
 }
 
 /**
@@ -90,6 +91,9 @@ int	main(int argc, char **av)
 	if (argc != 2)
 		raise_error("Invalid format, try: [./program] [map_filename]", 0, NULL);
 	obj = object_init();
+	if (!obj)
+		raise_error(NULL, errno, NULL);
 	parse(obj, av[1]);
 	load_window(obj);
+	return (0);
 }
