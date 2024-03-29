@@ -16,6 +16,9 @@ all : $(NAME)
 $(NAME) : $(OBJS) $(LIBFT) $(FT_PRINTF)
 	cc $(CFLAGS) $(OBJS) $(LIBFT) $(FT_PRINTF) $(LIBRARY) -o $(NAME)
 
+%_bonus.o : %_bonus.c $(B_INC)
+	cc $(CFLAGS) -c $< -o $@
+
 %.o : %.c $(INC)
 	cc $(CFLAGS) -c $< -o $@
 
@@ -29,9 +32,6 @@ bonus: $(B_NAME)
 
 $(B_NAME) : $(B_OBJS) $(LIBFT) $(FT_PRINTF) 
 	cc $(CFLAGS) $(B_SRCS) $(LIBFT) $(FT_PRINTF) $(LIBRARY) -o $(B_NAME)
-
-%_bonus.o : %_bonus.c $(B_INC)
-	cc $(CFLAGS) -c $< -o $@
 
 clean :
 	@make clean -C lib/libft/
